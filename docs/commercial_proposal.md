@@ -613,6 +613,6 @@ python app.py
 AI-архитектор  
 Email: npkap@mail.ru  
 Telegram: @your_telegram  
-Телефон: +7 (XXX) XXX-XX-XX
+Телефон: +7 (918) 384-70-50
 
 ---

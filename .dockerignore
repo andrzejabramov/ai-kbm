@@ -1,0 +1,23 @@
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Секреты
+.env
+.env.local
+
+# IDE и ОС
+.vscode/
+.idea/
+.DS_Store
+
+# Логи и документация (не нужны внутри контейнера)
+*.log
+*.md
+LICENSE

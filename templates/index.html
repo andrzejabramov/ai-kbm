@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Ассистент | {{ company.department }} — {{ company.name }}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-placeholder">🏭</div>
+        <div class="brand-text">
+          <div class="brand-title">{{ company.name }}</div>
+          <div class="brand-subtitle">
+            {{ company.department }} · AI-ассистент менеджера
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="status-badge" id="stageBadge">● Готов к работе</span>
+        <button id="exportCsvBtn" class="btn-icon" title="Экспорт чата в CSV">
+          📥
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="app-main">
+      <!-- LEFT: CHAT -->
+      <section class="chat-panel">
+        <div class="chat-messages" id="chatMessages">
+          <div class="message ai">
+            <div class="msg-avatar">🤖</div>
+            <div class="msg-body">
+              Здравствуйте! Я — AI-ассистент отдела продаж. Помогу оформить
+              заявку клиента, запросить себестоимость у технолога и рассчитать
+              маржинальность. С чего начнём?
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK COMMANDS -->
+        <div class="quick-commands">
+          <button
+            class="quick-btn"
+            data-cmd="Новая заявка от ООО Горняк на 100 шт НБ-120 до 15.07.2026"
+          >
+            📝 Новая заявка
+          </button>
+          <button class="quick-btn" data-cmd="Статус заказа">
+            📊 Статус заказа
+          </button>
+          <button class="quick-btn" data-cmd="Рассчитай себестоимость">
+            💰 Себестоимость
+          </button>
+          <button class="quick-btn" data-cmd="Что ты умеешь?">❓ Помощь</button>
+        </div>
+
+        <!-- INPUT -->
+        <div class="chat-input-area">
+          <textarea
+            id="chatInput"
+            placeholder="Напишите сообщение или выберите команду выше..."
+            rows="2"
+          ></textarea>
+          <button id="sendBtn" class="send-btn" title="Отправить">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT: FORM -->
+      <section class="form-panel">
+        <div class="form-header">
+          <h2>📋 Рабочая область</h2>
+          <span class="form-hint">Здесь отображаются документы и расчёты</span>
+        </div>
+        <div class="form-content" id="formContent">
+          <div class="placeholder-card">
+            <div class="placeholder-icon">📄</div>
+            <div class="placeholder-title">Ожидание заявки</div>
+            <div class="placeholder-text">
+              Начните диалог с AI-ассистентом — здесь появится черновик
+              документа, расчёт себестоимости или итоговая маржинальность.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <div class="footer-left">
+        © 2026 {{ company.name }} · Внутренний AI-инструмент
+      </div>
+      <div class="footer-right">
+        Материал и приложение подготовлены с помощью нейромодели
+        <span class="qwen-badge">Qwen3.7-Plus</span>
+      </div>
+    </footer>
+
+    <script>
+      const COMPANY = {{ company | tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+  </body>
+</html>

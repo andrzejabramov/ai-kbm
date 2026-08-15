@@ -178,16 +178,16 @@ stateDiagram-v2
     [*] --> New : заявка поступила
     New --> DraftAI : AI извлёк параметры
     DraftAI --> New : возврат на правку
-    DraftAI --> WaitSecond : подтверждено, сумма > 100 тыс ₽
-    DraftAI --> Confirmed : подтверждено, сумма ≤ 100 тыс ₽
-    WaitSecond --> Confirmed : второе подтверждение
-    WaitSecond --> Rejected : отклонено
+    DraftAI --> WaitSecond : сумма более 100 тыс рублей
+    DraftAI --> Confirmed : сумма не более 100 тыс рублей
+    WaitSecond --> Confirmed : второе подтверждение получено
+    WaitSecond --> Rejected : отклонено директором
     Confirmed --> InProduction : мастер взял в работу
     InProduction --> Done : выработка, сдача ОТК, списания
-    Confirmed --> Rejected : отмена с причиной (аудит)
+    Confirmed --> Rejected : отмена с причиной
     Done --> [*]
     Rejected --> [*]
-    note right of Validated_by_User : ¹ при сумме более 100 000 ₽ — после двойного подтверждения
+    note right of WaitSecond : при сумме более 100 тысяч рублей требуется второе подтверждение директора
 ```
 
 ## 5. Приоритизированный список требований (MoSCoW)
